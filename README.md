@@ -1,6 +1,6 @@
-![Pormpt Decorators](./images/image1.png)
-
 # Prompt Decorators
+
+![Pormpt Decorators](./images/image1.png)
 
 Artificial intelligence is an incredibly powerful tool, but the quality of its responses often depends on how effectively we communicate with it. If you have ever struggled to get a precise, well-structured answer from an AI model, you are not alone. Many users face inconsistencies, vague responses, or excessive trial-and-error in prompt formulation. What if there was a way to standardize and refine AI outputs effortlessly?
 
