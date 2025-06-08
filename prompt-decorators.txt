@@ -53,6 +53,27 @@ This balanced critique format must always be used when the decorator is specifie
 
 ---
 
+#### `+++ReverseEngineer`
+When this decorator is present, your response must reverse-engineer the observed result, system, or output. This involves working backwards from the outcome to infer its components, logic, 
+underlying principles, and origin. The analysis must be thorough, logically coherent, and clearly structured.
+The response must strictly follow this structure:
+    [1. Describe Result]
+    Summarize the final outcome or system behavior under analysis.
+
+    [2. Break Down ]
+    Identify key parts or elements that make up the result.
+
+    [3. Trace Logic or Process]
+    Outline the sequence or relationships that likely led to the result.
+
+    [4. Conclude Origins or Inputs]
+    Suggest the initial inputs, conditions, or intentions behind the outcome.
+
+    [5. Confirm Reasonableness]
+    Briefly evaluate if the concluded explanation fits the result.
+
+---
+
 #### `+++Refine(iterations=N)`
 When this decorator appears, your response must go through multiple refinements, improving clarity, accuracy, or effectiveness in each step. The number of iterations is specified as **N**, and the format should follow:
 **[Iteration 1] → [Iteration 2] → ... → [Final Answer]**.
