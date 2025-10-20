@@ -1,130 +1,189 @@
-# Prompt Decorators
+# Prompt Decorators Framework
 
-![Prompt Decorators](./images/image1.png)
-
-Artificial intelligence is an incredibly powerful tool, but the quality of its responses often depends on how effectively we communicate with it. If you have ever struggled to get a precise, well-structured answer from an AI model, you are not alone. Many users face inconsistencies, vague responses, or excessive trial-and-error in prompt formulation. What if there was a way to standardize and refine AI outputs effortlessly?
-
-**Enter Prompt Decorators** — a simple yet powerful approach that enhances AI responses using structured prefixes. By guiding AI with standardized instructions, Prompt Decorators help ensure that answers are clear, logical, and well-organized. Whether you are a researcher, developer, marketer, or casual user, this technique will save you time and frustration while unlocking AI’s full potential.
+Prompt Decorators extend the functionality of large language models by allowing structured, modular control over reasoning, style, and behavior.
+Each decorator enforces specific response rules, enabling users to declaratively modify how the model thinks and writes — without retraining.
 
 ---
 
-## 1. Introduction: The Challenge of AI Prompting
+## 1. Conceptual Overview
 
-AI models have revolutionized how we interact with technology, enabling automated content generation, research assistance, and problem-solving. However, the effectiveness of AI-generated responses depends significantly on how prompts are structured. Many users encounter common challenges when interacting with AI:
-
-1. **Ambiguous prompts lead to unpredictable responses.**  
-   AI models generate answers based on statistical patterns rather than deep understanding. A vague prompt like *"Explain machine learning"* can lead to a broad range of responses, from a beginner-friendly definition to an advanced technical discussion.
-
-2. **Overly detailed prompts are cumbersome and inconsistent.**  
-   Users often attempt to compensate for AI unpredictability by writing excessively detailed prompts, but this does not always lead to consistently structured responses.
-
-3. **Effective prompt engineering is not intuitive.**  
-   Crafting precise prompts requires experience, and minor changes in wording can significantly impact AI responses. Without a standardized method, users struggle to get the desired output efficiently.
-
-To address these issues, **Prompt Decorators** offer a straightforward yet powerful solution.
+Prompt Decorators are lightweight control markers (for example, `+++Reasoning`) that alter the response generation process.
+They can be combined, scoped, and remembered during conversation, forming a flexible behavioral layer over standard prompting.
 
 ---
 
-## 2. Introducing Prompt Decorators (`+++`)
+## 2. Categories of Prompt Decorators
 
-Inspired by Python decorators, **Prompt Decorators** allow users to modify AI behavior using simple prefixes at the start of a prompt. They offer a standardized way to structure AI responses without the need for lengthy instructions.
+The Prompt Decorators framework is organized into two main families, as illustrated in the taxonomy diagram below:
 
-### Why `+++` Instead of `@`?
+![Prompt Decorator Categories](./images/prompt-decorator-categories.png)
 
-In Python, the `@` symbol is used to apply decorators to functions and classes. However, many online platforms and tools also use `@` for tagging users and agents, making it an impractical choice for AI prompting. To avoid conflicts and ensure clarity, `+++` is used as a distinct and intuitive prefix for Prompt Decorators.
+### **A. Cognitive & Generative Decorators**
+These decorators guide *how the model thinks, explores, and develops ideas.*
+
+| **Subcategory** | **Purpose** | **Key Decorators** |
+|-----------------|--------------|--------------------|
+| **Reasoning & Generation** | Enforce analytical, logical, or multi-perspective reasoning. | `+++Reasoning`, `+++Debate`, `+++Socratic` |
+| **Exploration, Interaction & Planning** | Encourage open-ended exploration, inquiry, and planning. | `+++Interactive`, `+++Brainstorm`, `+++Planning`, `+++Import` |
+| **Inquiry & Clarification** | Ensure information gaps are identified and clarified before proceeding. | `+++Interactive`, `+++Rewrite` |
+| **Idea Development & Structuring** | Refine, structure, and extend ideas into coherent outputs. | `+++Rewrite`, `+++Planning` |
+| **Evaluation, Feedback & Refinement** | Critically assess and improve content through iteration. | `+++Critique`, `+++Refine`, `+++Candor` |
 
 ---
 
-## 3. Example of Prompt Decorators in Action
+### **B. Expressive & Systemic Decorators**
+These decorators control *how the model expresses results, manages sessions, and ensures consistency.*
 
-This is a normal prompt without decorators:
+| **Subcategory** | **Purpose** | **Key Decorators** |
+|-----------------|--------------|--------------------|
+| **Output Formatting & Expression** | Structure or constrain the format and tone of output. | `+++OutputFormat(format=FORMAT)`, `+++Tone(style=STYLE)` |
+| **Meta-Control & Session Management** | Manage decorator state, memory, and operational flow. | `+++ChatScope`, `+++MessageScope`, `+++Clear`, `+++ActiveDecs`, `+++AvailableDecs`, `+++Validate`, `+++FactCheck`, `+++CiteSources`, `+++Export`, `+++Dump` |
 
-```
-Suggest a name for an AI YouTube channel focused on AI/ML video tutorials.
-```
+---
 
-Enhanced with a decorator:
+## 3. Combining Decorators
 
-```
+Multiple decorators can be combined to refine responses.
+For example:
+
+```prompt
 +++Reasoning
-Suggest a name for an AI YouTube channel focused on AI/ML video tutorials.
++++StepByStep
++++Tone(style=formal)
+
+Explain the economic impact of renewable energy transitions.
 ```
 
-The `+++Reasoning` decorator forces the AI to provide a logical explanation before suggesting names, encouraging critical thinking and clarity.
-
-Multiple decorators can be combined to refine responses even further:
-
-```
-+++Refine(iterations=3)
-+++Reasoning
-Suggest a name for an AI YouTube channel focused on AI/ML video tutorials.
-```
-
-This example instructs the AI to refine its response through three iterations while providing a logical explanation first.
+This prompt enforces logical reasoning, structured progression, and formal tone simultaneously.
 
 ---
 
 ## 4. Key Prompt Decorators and Their Benefits
 
-| **Prompt Decorator**             | **Function**                                       |
-| -------------------------------- | -------------------------------------------------- |
-| `+++Reasoning`                   | Ensures logical explanation before answering       |
-| `+++StepByStep`                  | Breaks down complex tasks into steps               |
-| `+++Socratic`                    | Encourages critical thinking through questions     |
-| `+++Debate`                      | Generates multiple perspectives                    |
-| `+++Critique`                    | Analyzes strengths and weaknesses before improving |
-| `+++Refine(iterations=N)`        | Iterates through multiple refinements              |
-| `+++CiteSources`                 | Ensures AI includes references                     |
-| `+++FactCheck`                   | Prioritizes verifying factual accuracy             |
-| `+++OutputFormat(format=FORMAT)` | Structures the response in a specified format      |
-| `+++Tone(style=STYLE)`           | Enforces a specific tone                           |
-| `+++ChatScope`                   | Applies decorators across the entire conversation  |
-| `+++MessageScope`                | Limits decorators to the specific message          |
-| `+++Clear`                       | Clears all or selected active decorators           |
-| `+++ActiveDecs`                  | Displays currently active decorators               |
-| `+++AvailableDecs`               | Lists all available decorators with their statuses |
+| **Prompt Decorator** | **Parameters** | **Function** |
+|----------------------|---------------|--------------|
+| `+++Reasoning` | — | Ensures logical explanation before answering |
+| `+++StepByStep` | — | Breaks down complex tasks into sequential reasoning |
+| `+++Socratic` | — | Encourages critical thinking through guided questions |
+| `+++Debate` | — | Generates multiple perspectives before concluding |
+| `+++Critique` | — | Analyzes strengths and weaknesses before improving |
+| `+++Refine(iterations=N)` | `iterations` – number of refinement cycles | Iterates through multiple improvements |
+| `+++Interactive(limit=N, style=TYPE)` | `limit`, `style` | Asks clarifying questions when context is incomplete |
+| `+++Planning` | — | Outlines objectives and approach before execution |
+| `+++Brainstorm(limit=N, diversity=LEVEL)` | `limit`, `diversity` | Produces diverse ideas without early evaluation |
+| `+++Rewrite` | — | Reframes the user’s prompt for clarity and precision |
+| `+++Import(topic=STRING)` | `topic` – conceptual or disciplinary lens | Applies a named lens to reasoning |
+| `+++Candor(level=LEVEL)` | `level` – low, medium, or high | Controls feedback directness while staying professional |
+| `+++OutputFormat(format=FORMAT)` | `format` – output type | Structures the response in a specific format |
+| `+++Tone(style=STYLE)` | `style` – tone or register | Adjusts the communication tone or style |
+| `+++FactCheck` | — | Verifies factual accuracy of key claims |
+| `+++CiteSources` | — | Ensures all major claims are supported by sources |
+| `+++Validate` | — | Performs self-check on grammar, logic, and consistency |
+| `+++ChatScope` | — | Applies decorators persistently across a conversation |
+| `+++MessageScope` | — | Limits decorator effects to a single message |
+| `+++Clear(targets=LIST)` | `targets` – decorators to clear (optional) | Clears all or specified active decorators |
+| `+++ActiveDecs` | — | Lists currently active decorators |
+| `+++AvailableDecs` | — | Lists all available decorators and their status |
+| `+++Export(format=FORMAT)` | `format` – text, markdown, json, yaml | Exports or summarizes conversation in a chosen format |
+| `+++Dump` | Alias of `+++Export` | Quick or raw output version of `+++Export` |
 
-Each decorator plays a crucial role in improving AI interactions by enforcing structured, thoughtful, and reliable responses.
 
 ---
 
-## 5. Scope Management and Active Decorators
+## 5. How Scope and Memory Work
 
-Prompt Decorators can operate at two scopes:
+Decorator scope controls *how long* and *where* a decorator applies:
 
-- **Message Scope**: Decorators apply only to the current prompt.
-- **Chat Scope**: Decorators persist across multiple prompts until cleared.
+- **Message Scope** (`+++MessageScope`) → Affects only the current prompt.
+- **Chat Scope** (`+++ChatScope`) → Persists across conversation turns.
+- **Clear** (`+++Clear`) → Resets decorators selectively or entirely.
 
-You can manage active decorators dynamically using special decorators:
-- `+++ChatScope` to activate conversation-wide decorators,
-- `+++MessageScope` to revert to single-message mode,
-- `+++Clear` to clear all or selected active decorators,
-- `+++ActiveDecs` to view active decorators,
-- `+++AvailableDecs` to view all available decorators and their current status.
-
-Maintaining active decorator memory and respecting scope are mandatory for consistent behavior.
+The system retains awareness of active decorators to ensure consistent behavior between exchanges.
 
 ---
 
 ## 6. Prompt Decorators Definitions
 
-The detailed definitions of each Prompt Decorator are provided in the [`prompt-decorators.txt`](./prompt-decorators.txt) file located in this repository.
+Detailed definitions for each decorator are provided in **[`prompt-decorators.txt`](./prompt-decorators.txt)**.
 
-This document defines not only how each decorator must behave but also enforces strict compliance requirements, memory management, and scope handling during conversations.
+Each definition specifies:
+- Behavioral rules
+- Response structure
+- Parameters (if applicable)
+- Compliance and scope requirements
 
-Please note that this implementation reflects one possible realization of the idea. Others may find better ways to define and extend Prompt Decorators over time.
+### How to Use the Definition File
+
+Prompt Decorators rely on the model’s memory of definitions.
+To enable them in chat-based LLMs (such as ChatGPT, Gemini, Claude, or Grok):
+
+1. **Provide the definitions file once** — paste the contents of `prompt-decorators.txt` into the chat or add it to your custom/system instructions.
+2. The model will then “remember” the rules and behaviors of each decorator for that session.
+3. You can activate decorators inline by prefixing them in your prompt, for example:
+
+```prompt
++++Reasoning
++++Tone(style=formal)
+
+Explain why renewable energy transition affects global markets.
+```
+
+4. Multiple decorators can be combined to modify reasoning, tone, structure, and verification layers.
+5. To reset behaviors, use `+++Clear` or restart the session.
+
+This approach makes decorators portable and platform-agnostic — no code modification required.
 
 ---
 
-## 7. Learn More
+## 7. Examples of Decorator Usage
 
-To dive deeper into the concept of Prompt Decorators and how they can enhance AI interactions, check out the detailed article on Medium:  
-**[Read the full article HERE.](https://kalami.medium.com/prompt-decorators-a-simple-way-to-improve-ai-responses-c3f3c2579a8c)**
+Below are simple examples illustrating how one, two, or three decorators change the model’s behavior.
+These examples use natural language inputs that can be pasted directly into an LLM chat.
+
+### **Example 1 – Single Decorator**
+
+```prompt
++++Reasoning
+
+Why did the Roman Empire fall?
+```
+
+**Expected behavior:** The model explains its reasoning process before answering, giving a logical chain of causes.
 
 ---
 
-## 8. Contribution & Licensing
+### **Example 2 – Two Decorators**
 
-Contributions to expand, refine, or optimize Prompt Decorators are welcome. If you have suggestions, feel free to submit a pull request.
+```prompt
++++StepByStep
++++Tone(style=formal)
 
-This repository is distributed under the **MIT License**. See [`LICENSE`](./LICENSE) for details.
+Describe how neural networks learn from data.
+```
+
+**Expected behavior:** The model breaks down the explanation into sequential steps, maintaining a formal tone.
+
+---
+
+### **Example 3 – Three Decorators**
+
+```prompt
++++Brainstorm(limit=5, diversity=high)
++++Critique
++++Refine(iterations=3)
+Propose innovative applications for large language models in healthcare.
+```
+
+**Expected behavior:**
+1. The model first generates five diverse ideas.
+2. Then it critiques their strengths and weaknesses.
+3. Finally, it refines and improves the top ideas over two iterations.
+
+These compositional examples show how decorators can stack logically to form complex cognitive workflows without retraining the model.
+
+---
+
+## 8. License
+
+This framework is open-source under the MIT License.
+You are free to adapt, extend, or integrate it in your own prompt engineering workflows with attribution.

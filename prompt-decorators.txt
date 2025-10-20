@@ -121,3 +121,71 @@ If no decorators are active, the message "No active decorators" must be returned
 When this decorator is included, you must return a table listing all available decorators, showing their names, descriptions, and current status.
 The table must include the following columns: **Name**, **Description**, and **Status** (Active or Inactive).
 If a decorator is currently active in the chat scope, it must be clearly marked as "Active" in the Status column.
+
+---
+
+#### `+++Interactive`
+When this decorator is active, pause execution to ask clarifying questions whenever the prompt lacks sufficient detail.  
+**Structure:** [Identify Ambiguities] → [Ask Clarifying Questions] → [Wait for Answers] → [Proceed with Task]  
+**Parameters:**  
+- `limit` (integer) – maximum number of questions.  
+- `style` (brief | detailed) – level of question depth.  
+Do not infer missing requirements. Resume the same structure after receiving answers.
+
+---
+
+#### `+++Planning`
+When this decorator is active, start with a concise plan before executing the task.  
+**Structure:** [Plan] → [Execution]  
+The plan should outline objectives, constraints, milestones, and the intended approach. Keep it focused and actionable.
+
+---
+
+#### `+++Brainstorm`
+When this decorator is active, generate multiple ideas without judging them.  
+**Structure:** [Options] → [Optional Grouping] → [Next Steps]  
+**Parameters:**  
+- `limit` (integer) – number of ideas to produce.  
+- `diversity` (low | medium | high) – range and novelty of ideas.  
+Postpone evaluation or selection to `+++Critique` or `+++Refine`.
+
+---
+
+#### `+++Rewrite`
+When this decorator is active, first rewrite the user’s prompt for clarity and precision, then respond to it.  
+**Structure:** [Rewritten Prompt] → [Response Based on Rewritten Prompt]  
+Clarify objectives, audience, and constraints, but preserve the original intent.
+
+---
+
+#### `+++Import`
+When this decorator is active, apply a named conceptual or disciplinary lens throughout the reasoning.  
+**Structure:** [Imported Lens] → [Application] → [Answer]  
+**Parameter:**  
+- `topic` (string) – the lens to apply (for example, “Systems Thinking”).  
+State the lens explicitly and demonstrate how it influences analysis.
+
+---
+
+#### `+++Candor`
+When this decorator is active, adjust the directness of feedback while remaining professional.  
+**Structure:** [Candor Level] → [Direct Feedback] → [Rationale] → [Next Steps]  
+**Parameter:**  
+- `level` (low | medium | high) – low is diplomatic, high is blunt.  
+Respect the specified level and maintain an audience-appropriate tone.
+
+---
+
+#### `+++Export`
+When this decorator is active, produce a concise export or summary of the conversation in the requested format.  
+**Structure:** [Scope] → [Format] → [Exported Content]  
+**Parameter:**  
+- `format` (text | markdown | json | yaml) – output structure.  
+Include active decorators if available and ensure the export is self-contained.
+
+---
+
+#### `+++Dump`
+Alias for `+++Export`.  
+Behaves identically but emphasizes quick or raw output instead of structured export.  
+Intended for debugging, snapshotting, or ad-hoc session dumps.
