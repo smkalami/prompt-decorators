@@ -36,7 +36,7 @@ These decorators control *how the model expresses results, manages sessions, and
 
 | **Subcategory** | **Purpose** | **Key Decorators** |
 |-----------------|--------------|--------------------|
-| **Output Formatting & Expression** | Structure or constrain the format and tone of output. | `+++OutputFormat(format=FORMAT)`, `+++Tone(style=STYLE)` |
+| **Output Formatting & Expression** | Structure or constrain the format and tone of output. | `+++OutputFormat`, `+++Tone` |
 | **Meta-Control & Session Management** | Manage decorator state, memory, and operational flow. | `+++ChatScope`, `+++MessageScope`, `+++Clear`, `+++ActiveDecs`, `+++AvailableDecs`, `+++Validate`, `+++FactCheck`, `+++CiteSources`, `+++Export`, `+++Dump` |
 
 ---
