@@ -5,14 +5,14 @@ Each decorator enforces specific response rules, enabling users to declaratively
 
 ---
 
-## 1. Conceptual Overview
+## Conceptual Overview
 
 Prompt Decorators are lightweight control markers (for example, `+++Reasoning`) that alter the response generation process.
 They can be combined, scoped, and remembered during conversation, forming a flexible behavioral layer over standard prompting.
 
 ---
 
-## 2. Categories of Prompt Decorators
+## Categories of Prompt Decorators
 
 The Prompt Decorators framework is organized into two main families, as illustrated in the taxonomy diagram below:
 
@@ -41,7 +41,7 @@ These decorators control *how the model expresses results, manages sessions, and
 
 ---
 
-## 3. Combining Decorators
+## Combining Decorators
 
 Multiple decorators can be combined to refine responses.
 For example:
@@ -58,7 +58,7 @@ This prompt enforces logical reasoning, structured progression, and formal tone 
 
 ---
 
-## 4. Key Prompt Decorators and Their Benefits
+## Key Prompt Decorators and Their Benefits
 
 | **Prompt Decorator** | **Parameters** | **Function** |
 |----------------------|---------------|--------------|
@@ -90,7 +90,7 @@ This prompt enforces logical reasoning, structured progression, and formal tone 
 
 ---
 
-## 5. How Scope and Memory Work
+## How Scope and Memory Work
 
 Decorator scope controls *how long* and *where* a decorator applies:
 
@@ -102,7 +102,7 @@ The system retains awareness of active decorators to ensure consistent behavior 
 
 ---
 
-## 6. Prompt Decorators Definitions
+## Prompt Decorators Definitions
 
 Detailed definitions for each decorator are provided in **[`prompt-decorators.txt`](./prompt-decorators.txt)**.
 
@@ -135,7 +135,7 @@ This approach makes decorators portable and platform-agnostic — no code modifi
 
 ---
 
-## 7. Examples of Decorator Usage
+## Examples of Decorator Usage
 
 Below are simple examples illustrating how one, two, or three decorators change the model’s behavior.
 These examples use natural language inputs that can be pasted directly into an LLM chat.
@@ -183,7 +183,34 @@ These compositional examples show how decorators can stack logically to form com
 
 ---
 
-## 8. License
+## Citation
+
+The Prompt Decorators framework is described in detail in the paper:
+
+**"Prompt Decorators: A Declarative and Composable Syntax for Reasoning, Formatting, and Control in LLMs"**  
+*Mostapha Kalami Heris*  
+arXiv preprint arXiv:2510.19850 (2025)
+
+📄 **Read the full paper:** [https://arxiv.org/abs/2510.19850](https://arxiv.org/abs/2510.19850)
+
+### BibTeX Citation
+
+```bibtex
+@misc{heris2025promptdecorators,
+      title={Prompt Decorators: A Declarative and Composable Syntax for Reasoning, Formatting, and Control in LLMs}, 
+      author={Mostapha Kalami Heris},
+      year={2025},
+      eprint={2510.19850},
+      archivePrefix={arXiv},
+      primaryClass={cs.PL},
+      url={https://arxiv.org/abs/2510.19850}
+} 
+}
+```
+
+---
+
+## License
 
 This framework is open-source under the MIT License.
 You are free to adapt, extend, or integrate it in your own prompt engineering workflows with attribution.
