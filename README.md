@@ -204,7 +204,6 @@ arXiv preprint arXiv:2510.19850 (2025)
       archivePrefix={arXiv},
       primaryClass={cs.PL},
       url={https://arxiv.org/abs/2510.19850}
-} 
 }
 ```
 
