@@ -217,6 +217,13 @@ A dedicated **Agent Skill** implementation of the Prompt Decorators framework is
 
 Unlike the chat-based approach (pasting the definitions file), the Agent Skill packages the framework as a reusable skill that can be plugged directly into agentic pipelines, AI assistants, and tool-calling workflows. No manual setup per session required.
 
+The repository also hosts additional skills beyond Prompt Decorators, including:
+
+- **`evo-search` (Evolutionary Search)** — applies a mechanism inspired by genetic and evolutionary algorithms to iteratively improve the quality of AI-generated responses through selection, mutation, and refinement cycles.
+- **`tournament-search` (Tournament Search)** — simulates a competition-style tournament among candidate responses, making it effective for search and discovery tasks where the best answer must be identified from a diverse set of options.
+
+More skills are planned and will be added to the repository over time.
+
 For more information, installation instructions, and examples, visit the dedicated repository:
 
 👉 **[https://github.com/smkalami/skills](https://github.com/smkalami/skills)**
