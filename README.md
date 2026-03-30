@@ -1,7 +1,35 @@
 # Prompt Decorators Framework
 
+![Prompt Decorators Example](./images/image1.png)
+
 Prompt Decorators extend the functionality of large language models by allowing structured, modular control over reasoning, style, and behavior.
 Each decorator enforces specific response rules, enabling users to declaratively modify how the model thinks and writes — without retraining.
+
+> **New:** Prompt Decorators is now available as an **Agent Skill**, making it easy to integrate into AI and agentic tools. [Jump to the Agent Skill section ↓](#agent-skill)
+
+---
+
+## Table of Contents
+
+- [Prompt Decorators Framework](#prompt-decorators-framework)
+  - [Table of Contents](#table-of-contents)
+  - [Conceptual Overview](#conceptual-overview)
+  - [Categories of Prompt Decorators](#categories-of-prompt-decorators)
+    - [**A. Cognitive \& Generative Decorators**](#a-cognitive--generative-decorators)
+    - [**B. Expressive \& Systemic Decorators**](#b-expressive--systemic-decorators)
+  - [Combining Decorators](#combining-decorators)
+  - [Key Prompt Decorators and Their Benefits](#key-prompt-decorators-and-their-benefits)
+  - [How Scope and Memory Work](#how-scope-and-memory-work)
+  - [Prompt Decorators Definitions](#prompt-decorators-definitions)
+    - [How to Use the Definition File](#how-to-use-the-definition-file)
+  - [Examples of Decorator Usage](#examples-of-decorator-usage)
+    - [**Example 1 – Single Decorator**](#example-1--single-decorator)
+    - [**Example 2 – Two Decorators**](#example-2--two-decorators)
+    - [**Example 3 – Three Decorators**](#example-3--three-decorators)
+  - [Agent Skill](#agent-skill)
+  - [Citation](#citation)
+    - [BibTeX Citation](#bibtex-citation)
+  - [License](#license)
 
 ---
 
@@ -180,6 +208,18 @@ Propose innovative applications for large language models in healthcare.
 3. Finally, it refines and improves the top ideas over two iterations.
 
 These compositional examples show how decorators can stack logically to form complex cognitive workflows without retraining the model.
+
+---
+
+## Agent Skill
+
+A dedicated **Agent Skill** implementation of the Prompt Decorators framework is available, allowing it to be seamlessly integrated into a wide range of AI and agentic tools.
+
+Unlike the chat-based approach (pasting the definitions file), the Agent Skill packages the framework as a reusable skill that can be plugged directly into agentic pipelines, AI assistants, and tool-calling workflows. No manual setup per session required.
+
+For more information, installation instructions, and examples, visit the dedicated repository:
+
+👉 **[https://github.com/smkalami/skills](https://github.com/smkalami/skills)**
 
 ---
 
